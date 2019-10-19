@@ -7,6 +7,14 @@ const User = new Schema({
         type: String,
         required: true
     },
+    bigChainId: {
+        privateKey: {
+            type: String
+        },
+        publicKey: {
+            type: String
+        }
+    },
     surname: {
         type: String,
         required: true
@@ -64,10 +72,10 @@ User.statics.updateUser = async function (data) {
 }
 
 
-User.statics.deleteUser = async function(id){
-    const user  = await this.findById(id);
-    if(!user)
-        throw new Error('User doesn\'t exist' );
+User.statics.deleteUser = async function (id) {
+    const user = await this.findById(id);
+    if (!user)
+        throw new Error('User doesn\'t exist');
 
     return user.delete();
 }

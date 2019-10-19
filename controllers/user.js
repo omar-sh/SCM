@@ -1,11 +1,13 @@
 const {User} = require('../database');
-
+const BigChain = require('../services/BigChain');
 class UserController {
 
 
     static async create(req, res, next) {
 
         try {
+            // const bigChain
+            req.body.bigChainId = BigChain.generateKey();
             const user = await User.createUser(req.body);
             return res.send(user);
         } catch (e) {
